@@ -24,5 +24,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Wafa El jaoua
  * @version 0.1
  */
+
 public interface DsiIdentifierRepository extends JpaRepository<DsiIdentifier,Long> {
 }

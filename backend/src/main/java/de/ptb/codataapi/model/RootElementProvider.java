@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022-2023 Physikalisch-Technische Bundesanstalt (PTB), all rights reserved.
+ * Copyright (c) 2022-2024 Physikalisch-Technische Bundesanstalt (PTB), all rights reserved.
  * This source code and software is free software: you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public License as published
  * by the Free Software Foundation, version 3 of the License.
@@ -8,14 +8,14 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU Lesser General Public License for more details.
  * You should have received a copy of the GNU Lesser General Public License
- * along with this code. If not, see http://www.gnu.org/licenses.
+ * along with this XSD. If not, see http://www.gnu.org/licenses.
  * CONTACT: info@ptb.de
  * DEVELOPMENT: https://d-si.ptb.de
  * AUTHORS: Wafa El Jaoua, Tobias Hoffmann, Clifford Brown, Daniel Hutzschenreuter
- * LAST MODIFIED: 13.06.23, 14:56
+ * LAST MODIFIED: 31.08.23, 09:41
  */
 
-package de.ptb.codataapi.marshal;
+package de.ptb.codataapi.model;
 
 /**
  * This is an interface for RootElementProvider to get the root element name

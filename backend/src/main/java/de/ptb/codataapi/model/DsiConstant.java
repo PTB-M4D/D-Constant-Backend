@@ -36,7 +36,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "dsiconstant")
 @Data @NoArgsConstructor @AllArgsConstructor @ToString
-public class DsiConstant  {
+public class DsiConstant implements Serializable {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @XmlTransient
     private Long id;
@@ -45,14 +45,14 @@ public class DsiConstant  {
     @XmlElement( namespace = "https://ptb.de/si")
     private String label;
     @XmlElement( namespace = "https://ptb.de/si")
+    @Column(name = "quantity")
     private String quantityTypeQUDT;
     @XmlElement( namespace = "https://ptb.de/si")
     private String value;
     @XmlElement( namespace = "https://ptb.de/si")
     private String unit;
     @XmlElement( namespace = "https://ptb.de/si")
-    //@XmlJavaTypeAdapter(DateTimeAdapter.class)
-//    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+    @Column(name = "datetime")
     private String dateTime;
     @XmlElement( namespace = "https://ptb.de/si")
     private String uncertainty;

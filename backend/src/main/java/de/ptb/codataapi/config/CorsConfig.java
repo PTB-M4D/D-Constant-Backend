@@ -16,11 +16,13 @@
  */
 
 package de.ptb.codataapi.config;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 
 @Configuration
 @EnableWebMvc
@@ -37,12 +39,9 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**") // Map to all endpoints.
-                        .allowedOrigins("http://localhost:4200",
-                                "https://d-si.ptb.de",
-                                "https://d-si.ptb.de/swagger-ui/index.html",
-                                "https://http://localhost:8082",
-                                "https://http://localhost:8082/v3/api-docs",
-                                "http://localhost:8082/swagger-ui/index.html") //list of allowed origin URLs.
+                        .allowedOrigins("http://localhost:4200","http://localhost:8083/api",
+                                "https://d-si.ptb.de","https://d-si.ptb.de/api/d-siConstantJson",
+                                "https://d-si.ptb.de/api/d-constant/swagger-ui/index.html") //list of allowed origin URLs.
                         .allowedMethods("GET","POST","PUT","DELETE")// Allowed HTTP methods.
                         .allowedHeaders("*")// Allowed request headers.
                         .exposedHeaders("header1", "header2")// Headers that can be exposed to the client.
@@ -52,6 +51,15 @@ public class CorsConfig {
         };
     }
 
-
-
+//    @Bean
+//    public CorsFilter corsFilter() {
+//        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        final CorsConfiguration config = new CorsConfiguration();
+//        config.setAllowedOrigins(List.of("http://localhost:8082","https://d-si.ptb.de"));
+//        config.setAllowedHeaders(Arrays.asList("Origin", "Content-Type", "Accept"));
+//        config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "OPTIONS", "DELETE", "PATCH"));
+//        config.setAllowCredentials(true);
+//        source.registerCorsConfiguration("/**", config);
+//        return new CorsFilter(source);
+//    }
 }

@@ -18,10 +18,17 @@
 package de.ptb.codataapi;
 
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
+//@OpenAPIDefinition(servers = {
+//        @Server(url = "http://localhost:8082", description = "local testing api"),
+//        @Server(url = "https://d-si.ptb.de", description = "production system")})
+//@Tag(name = "D-Constant Api", description = "D-Constant management APIs")
 @SpringBootApplication
+
 public class CodataApiApplication  {
 
     public static void main(String[] args){

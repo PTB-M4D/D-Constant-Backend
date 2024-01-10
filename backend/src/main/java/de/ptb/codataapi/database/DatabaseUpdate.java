@@ -55,7 +55,6 @@ public class DatabaseUpdate implements CommandLineRunner {
         planckConstant2018.setName("planckConstant");
         planckConstant2018.setYear("2018");
         planckConstant2018.setDsiApproved(true);
-        planckConstant2018.setIdentifier(dsiIdentifierRepository.findAll());
         planckConstant2018.setDsiConstant(new DsiConstant(null,"2018", "planckConstant", "Action", "6.62607015E-34", "\\joule\\hertz\\tothe{-1}", "2018-05-20T00:00:00Z" , "0.0", "normal"));
         planckConstant2018.setMath(false);
         planckConstant2018.setSIDefining(true);
@@ -66,14 +65,7 @@ public class DatabaseUpdate implements CommandLineRunner {
         DsiIdentifier dsi02 = new DsiIdentifier(null,"DSI","https://ptb.de/si/d-constant/codata/planckConstant");
         DsiIdentifier dsi03 = new DsiIdentifier(null,"BIPM","https://siunits.stuchalk.domains.unf.edu/si/definingconstant/planck_constant");
         DsiIdentifier dsi04 = new DsiIdentifier(null,"CODATA","https://siunits.stuchalk.domains.unf.edu/si/definingconstant/planck_constant");
-        dsiIdentifierList0.add(dsi01);
-        dsiIdentifierList0.add(dsi02);
-        dsiIdentifierList0.add(dsi03);
-        dsiIdentifierList0.add(dsi04);
-        dsiIdentifierRepository.save(dsi01);
-        dsiIdentifierRepository.save(dsi02);
-        dsiIdentifierRepository.save(dsi03);
-        dsiIdentifierRepository.save(dsi04);
+        getDsiIdiList(dsiIdentifierList0, dsi01, dsi02, dsi03, dsi04);
         planckConstant2018.setIdentifier( dsiIdentifierList0);
         scientificConstantRepository.save(planckConstant2018);
 
@@ -118,14 +110,7 @@ public class DatabaseUpdate implements CommandLineRunner {
         DsiIdentifier dsi28 = new DsiIdentifier(null,"DSI","https://d-si.ptb.de/api/d-constant/speedOfLightInVacuum");
         DsiIdentifier dsi38 = new DsiIdentifier(null,"BIPM","https://siunits.stuchalk.domains.unf.edu/si/definingconstant/speed_of_light_vacuum");
         DsiIdentifier dsi48 = new DsiIdentifier(null,"CODATA","https://pml.nist.gov/cgi-bin/cuu/Value?c|search_for=speed+of+light");
-        dsiIdentifierList18.add(dsi18);
-        dsiIdentifierList18.add(dsi28);
-        dsiIdentifierList18.add(dsi38);
-        dsiIdentifierList18.add(dsi48);
-        dsiIdentifierRepository.save(dsi18);
-        dsiIdentifierRepository.save(dsi28);
-        dsiIdentifierRepository.save(dsi38);
-        dsiIdentifierRepository.save(dsi48);
+        getDsiIdiList(dsiIdentifierList18, dsi18, dsi28, dsi38, dsi48);
         speedOfLight2018.setIdentifier(dsiIdentifierList18);
         scientificConstantRepository.save(speedOfLight2018);
 
@@ -171,14 +156,7 @@ public class DatabaseUpdate implements CommandLineRunner {
         DsiIdentifier dsiHyperfine28 = new DsiIdentifier(null,"DSI","https://d-si.ptb.de/api/d-constant/hyperfineTransitionFrequencyOfCs133");
         DsiIdentifier dsiHyperfine38 = new DsiIdentifier(null,"BIPM","https://siunits.stuchalk.domains.unf.edu/si/definingconstant/caesium_transition_frequency");
         DsiIdentifier dsiHyperfine48 = new DsiIdentifier(null,"CODATA","https://pml.nist.gov/cgi-bin/cuu/Value?nucs|search_for=hyperfine");
-        dsiIdentifierListHyperfine18.add(dsiHyperfine18);
-        dsiIdentifierListHyperfine18.add(dsiHyperfine28);
-        dsiIdentifierListHyperfine18.add(dsiHyperfine38);
-        dsiIdentifierListHyperfine18.add(dsiHyperfine48);
-        dsiIdentifierRepository.save(dsiHyperfine18);
-        dsiIdentifierRepository.save(dsiHyperfine28);
-        dsiIdentifierRepository.save(dsiHyperfine38);
-        dsiIdentifierRepository.save(dsiHyperfine48);
+        getDsiIdiList(dsiIdentifierListHyperfine18, dsiHyperfine18, dsiHyperfine28, dsiHyperfine38, dsiHyperfine48);
         hyperfineTransitionFrequency18.setIdentifier(dsiIdentifierListHyperfine18);
         scientificConstantRepository.save(hyperfineTransitionFrequency18);
 
@@ -222,14 +200,7 @@ public class DatabaseUpdate implements CommandLineRunner {
         DsiIdentifier dsiElementaryCharge28 = new DsiIdentifier(null,"DSI","https://d-si.ptb.de/api/d-constant/elementaryCharge");
         DsiIdentifier dsiElementaryCharge38 = new DsiIdentifier(null,"BIPM","https://siunits.stuchalk.domains.unf.edu/si/definingconstant/elementary_charge");
         DsiIdentifier dsiElementaryCharge48 = new DsiIdentifier(null,"CODATA","https://pml.nist.gov/cgi-bin/cuu/Value?e|search_for=elementary+charge");
-        dsiIdElmentaryCharge18.add(dsiElementaryCharge18);
-        dsiIdElmentaryCharge18.add(dsiElementaryCharge28);
-        dsiIdElmentaryCharge18.add(dsiElementaryCharge38);
-        dsiIdElmentaryCharge18.add(dsiElementaryCharge48);
-        dsiIdentifierRepository.save(dsiElementaryCharge18);
-        dsiIdentifierRepository.save(dsiElementaryCharge28);
-        dsiIdentifierRepository.save(dsiElementaryCharge38);
-        dsiIdentifierRepository.save(dsiElementaryCharge48);
+        getDsiIdiList(dsiIdElmentaryCharge18, dsiElementaryCharge18, dsiElementaryCharge28, dsiElementaryCharge38, dsiElementaryCharge48);
         elementaryCharge2018.setIdentifier(dsiIdElmentaryCharge18);
         scientificConstantRepository.save(elementaryCharge2018);
 
@@ -277,14 +248,7 @@ public class DatabaseUpdate implements CommandLineRunner {
         DsiIdentifier dsiBoltz28 = new DsiIdentifier(null,"DSI","https://d-si.ptb.de/api/d-constant/boltzmannConstant");
         DsiIdentifier dsiBoltz38 = new DsiIdentifier(null,"BIPM","https://siunits.stuchalk.domains.unf.edu/si/definingconstant/boltzmann_constant");
         DsiIdentifier dsiBoltz48 = new DsiIdentifier(null,"CODATA","https://pml.nist.gov/cgi-bin/cuu/Value?k|search_for=boltzmann");
-        dsiIdBoltzList18.add(dsiBoltz18);
-        dsiIdBoltzList18.add(dsiBoltz28);
-        dsiIdBoltzList18.add(dsiBoltz38);
-        dsiIdBoltzList18.add(dsiBoltz48);
-        dsiIdentifierRepository.save(dsiBoltz18);
-        dsiIdentifierRepository.save(dsiBoltz28);
-        dsiIdentifierRepository.save(dsiBoltz38);
-        dsiIdentifierRepository.save(dsiBoltz48);
+        getDsiIdiList(dsiIdBoltzList18, dsiBoltz18, dsiBoltz28, dsiBoltz38, dsiBoltz48);
         boltzmannConstant18.setIdentifier(dsiIdBoltzList18);
         scientificConstantRepository.save(boltzmannConstant18);
 
@@ -330,14 +294,7 @@ public class DatabaseUpdate implements CommandLineRunner {
         DsiIdentifier dsiAvogado28 = new DsiIdentifier(null,"DSI","https://d-si.ptb.de/api/d-constant/avogadroConstant");
         DsiIdentifier dsiAvogado38 = new DsiIdentifier(null,"BIPM","https://siunits.stuchalk.domains.unf.edu/si/definingconstant/avogadro_constant");
         DsiIdentifier dsiAvogado48 = new DsiIdentifier(null,"CODATA","https://pml.nist.gov/cgi-bin/cuu/Value?na|search_for=avogadro");
-        dsiIdAvogadoList18.add(dsiAvogado18);
-        dsiIdAvogadoList18.add(dsiAvogado28);
-        dsiIdAvogadoList18.add(dsiAvogado38);
-        dsiIdAvogadoList18.add(dsiAvogado48);
-        dsiIdentifierRepository.save(dsiAvogado18);
-        dsiIdentifierRepository.save(dsiAvogado28);
-        dsiIdentifierRepository.save(dsiAvogado38);
-        dsiIdentifierRepository.save(dsiAvogado48);
+        getDsiIdiList(dsiIdAvogadoList18, dsiAvogado18, dsiAvogado28, dsiAvogado38, dsiAvogado48);
         avogadroConstant18.setIdentifier(dsiIdAvogadoList18);
         scientificConstantRepository.save(avogadroConstant18);
 
@@ -385,14 +342,7 @@ public class DatabaseUpdate implements CommandLineRunner {
         DsiIdentifier dsiLuminousEfficacy28 = new DsiIdentifier(null,"DSI","https://d-si.ptb.de/api/d-constant/luminousEfficacy");
         DsiIdentifier dsiLuminousEfficacy38 = new DsiIdentifier(null,"BIPM","https://siunits.stuchalk.domains.unf.edu/si/definingconstant/luminous_efficacy");
         DsiIdentifier dsiLuminousEfficacy48 = new DsiIdentifier(null,"CODATA","https://pml.nist.gov/cgi-bin/cuu/Value?kcd|search_for=luminous");
-        dsiIdLuminousEfficacy18.add(dsiLuminousEfficacy18);
-        dsiIdLuminousEfficacy18.add(dsiLuminousEfficacy28);
-        dsiIdLuminousEfficacy18.add(dsiLuminousEfficacy38);
-        dsiIdLuminousEfficacy18.add(dsiLuminousEfficacy48);
-        dsiIdentifierRepository.save(dsiLuminousEfficacy18);
-        dsiIdentifierRepository.save(dsiLuminousEfficacy28);
-        dsiIdentifierRepository.save(dsiLuminousEfficacy38);
-        dsiIdentifierRepository.save(dsiLuminousEfficacy48);
+        getDsiIdiList(dsiIdLuminousEfficacy18, dsiLuminousEfficacy18, dsiLuminousEfficacy28, dsiLuminousEfficacy38, dsiLuminousEfficacy48);
         luminousEfficacy2018.setIdentifier(dsiIdLuminousEfficacy18);
         scientificConstantRepository.save(luminousEfficacy2018);
 
@@ -580,6 +530,17 @@ public class DatabaseUpdate implements CommandLineRunner {
         eDigits32.setIdentifier(dsiIdEDigits32);
         scientificConstantRepository.save(eDigits32);
 
+    }
+
+    public void getDsiIdiList(List<DsiIdentifier> dsiIdentifierList0, DsiIdentifier dsi01, DsiIdentifier dsi02, DsiIdentifier dsi03, DsiIdentifier dsi04) {
+        dsiIdentifierList0.add(dsi01);
+        dsiIdentifierList0.add(dsi02);
+        dsiIdentifierList0.add(dsi03);
+        dsiIdentifierList0.add(dsi04);
+        dsiIdentifierRepository.save(dsi01);
+        dsiIdentifierRepository.save(dsi02);
+        dsiIdentifierRepository.save(dsi03);
+        dsiIdentifierRepository.save(dsi04);
     }
 
 }

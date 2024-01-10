@@ -17,7 +17,7 @@
 
 package de.ptb.codataapi.model;
 
-import de.ptb.codataapi.marshal.RootElementProvider;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.xml.bind.annotation.*;
 import lombok.AllArgsConstructor;
@@ -26,7 +26,6 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.Formula;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -42,6 +41,7 @@ import java.util.List;
 @ToString
 @XmlRootElement(name= "constant", namespace = "https://ptb.de/si/d-constant" )
 @XmlAccessorType(XmlAccessType.FIELD)
+@Schema(description = "D-Constant Model Information")
 public class ScientificConstant implements RootElementProvider {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,15 +51,19 @@ public class ScientificConstant implements RootElementProvider {
     private  String name;
     @XmlTransient
     private  String year;
+    @Schema
     @Formula("concat(name,year)")
     @XmlTransient
     private String nameYear;
+    @Schema
     @OneToMany
     @XmlElementWrapper(name="identifiers", namespace = "https://ptb.de/si/d-constant")
     @XmlElement( namespace = "https://ptb.de/si/d-constant" )
     private List<DsiIdentifier> identifier;
+    @Schema
     @XmlElement( namespace = "https://ptb.de/si/d-constant" )
     private boolean dsiApproved;
+    @Schema
     @OneToOne(cascade = CascadeType.ALL)
     @XmlElement(name="constant", namespace = "https://ptb.de/si" )
     private DsiConstant dsiConstant;
@@ -69,6 +73,8 @@ public class ScientificConstant implements RootElementProvider {
     private boolean isCOData;
     @XmlAttribute
     private boolean isMath;
+
+
 
     @Override
     public String getRootElementName(String nameYear) {
